@@ -8,11 +8,11 @@ from selenium.webdriver.common.keys import Keys
 class ProfilePage(BasePage):   
     
     def __init__(self, driver, user):
-        BasePage.__init__(driver)
+        BasePage.driver = driver
         self.username = user
 
     def visit(self):
-        BasePage.visit(self, 'www.instagram.com/' + username)
+        BasePage.visit(self, 'http://www.instagram.com/' + self.username)
 
     def is_title_matches(self):
         return self.username in self.driver.title
@@ -33,7 +33,7 @@ class ProfilePage(BasePage):
                 actions.perform()
                 self.wait()
        
-            followers_elems = self.driver.find_elements(ProfilePageLocators.FollowersDialogLocators.FOLLOWER_ELEM)
+            followers_elems = self.driver.find_elements(*ProfilePageLocators.FollowersDialogLocators.FOLLOWER_ELEM)
 
             return [e.text for e in followers_elems]
         

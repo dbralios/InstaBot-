@@ -22,6 +22,6 @@ class ProfilePageLocators(object):
     class PostsDialogLocators(object):
 
         CLOSE = (By.XPATH, '//button[text()="Close"]')
-        LIKE = (By.PARTIAL_LINK_TEXT, 'Like')
+        LIKE = (By.XPATH, '//span[text()="Like"]')
         NEXT = (By.PARTIAL_LINK_TEXT, 'Next')
 
